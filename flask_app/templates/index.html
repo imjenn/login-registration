@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+  <title>Login</title>
+</head>
+
+<body>
+  <div id="container">
+    <div class="register">
+      <h2>Register</h2>
+      <form action="/register" method="post">
+        <div class="mb-3">
+          <label for="formGroupExampleInput" class="form-label">First Name</label>
+          <input type="text" class="form-control" id="formGroupExampleInput" name="first_name" placeholder="First Name">
+        </div>
+        <div class="mb-3">
+          <label for="formGroupExampleInput2" class="form-label">Last Name</label>
+          <input type="text" class="form-control" id="formGroupExampleInput2" name="last_name" placeholder="Last Name">
+        </div>
+        <div class="mb-3">
+          <label for="formGroupExampleInput2" class="form-label">Email</label>
+          <input type="text" class="form-control" id="formGroupExampleInput2" name="email" placeholder="Email">
+        </div>
+        <div class="mb-3">
+          <label for="formGroupExampleInput2" class="form-label">Password</label>
+          <input type="password" class="form-control" id="formGroupExampleInput2" name="pw1" placeholder="Password">
+        </div>
+        <div class="mb-3">
+          <label for="formGroupExampleInput2" class="form-label">Confirm Password</label>
+          <input type="password" class="form-control" id="formGroupExampleInput2" name="pw2"
+            placeholder="Confirm password">
+        </div>
+        <button class="btn btn-primary btn-md btn-block" type="submit">Register</button>
+        {% with messages = get_flashed_messages(category_filter=['register']) %}
+          {% if messages %}
+            {% for message in messages %}
+              <p class="flash">{{message}}</p>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+      </form>
+    </div>
+    <div class="login">
+      <h2>Login</h2>
+      <form action="/login" method="post">
+        <div class="mb-3">
+          <label for="formGroupExampleInput" class="form-label">Email</label>
+          <input type="text" class="form-control" id="formGroupExampleInput" name="email" placeholder="Email">
+        </div>
+        <div class="mb-3">
+          <label for="formGroupExampleInput2" class="form-label">Password</label>
+          <input type="password" class="form-control" id="formGroupExampleInput2" name="password"
+            placeholder="Password">
+        </div>
+        <button class="btn btn-primary btn-md btn-block" type="submit">Login</button>
+        {% with messages = get_flashed_messages(category_filter=['login']) %}
+          {% if messages %}
+            {% for message in messages %}
+              <p class="flash">{{message}}</p>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+      </form>
+    </div>
+  </div>
+</body>
+
+</html>
